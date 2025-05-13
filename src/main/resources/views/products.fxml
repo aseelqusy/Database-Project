@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.ecommerce.controllers.ProductsController"
+            prefWidth="1280" prefHeight="720">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" padding="20" styleClass="products-header">
+            <Label fx:id="categoryLabel" text="All Products" styleClass="category-title" />
+            <Region HBox.hgrow="ALWAYS" />
+            <TextField fx:id="searchField" promptText="Search for products..." styleClass="search-field" />
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <FlowPane fx:id="productsContainer" padding="20" hgap="20" vgap="20" alignment="TOP_LEFT" />
+        </ScrollPane>
+    </center>
+
+</BorderPane>

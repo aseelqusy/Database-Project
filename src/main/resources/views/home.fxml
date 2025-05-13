@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.ecommerce.controllers.HomeController"
+            prefWidth="1280" prefHeight="720"
+            stylesheets="@/styles/home.css">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox spacing="30" alignment="CENTER_LEFT" styleClass="navbar">
+            <Label text="cyber" styleClass="logo" />
+            <TextField fx:id="searchField" promptText="Search" styleClass="search-bar" />
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS" />
+
+            <HBox spacing="15" alignment="CENTER">
+                <Hyperlink text="Home" />
+                <Hyperlink text="About" />
+                <Hyperlink text="Contact Us" />
+                <Hyperlink text="Blog" />
+                <Button text="❤" styleClass="icon-btn" />
+                <Button text="🛒" styleClass="icon-btn" />
+
+                <!-- User Avatar + Profile Menu -->
+                <ImageView fx:id="userAvatar"
+                           fitWidth="32" fitHeight="32"
+                           preserveRatio="true"> </ImageView>
+
+
+                <MenuButton text="👤 Islam Yasin" styleClass="profile-menu">
+                    <items>
+                        <MenuItem text="My Profile" />
+                        <MenuItem text="Settings" />
+                        <MenuItem text="Log Out" onAction="#handleLogout" />
+                    </items>
+                </MenuButton>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="0">
+            <!-- Hero Section -->
+            <StackPane prefHeight="400" styleClass="hero-section">
+                <ImageView fx:id="heroImage"
+                           fitWidth="1280"
+                           fitHeight="400"
+                           preserveRatio="false"
+                           StackPane.alignment="CENTER" />
+
+                <VBox alignment="CENTER_LEFT"
+                      spacing="10"
+                      StackPane.alignment="CENTER_LEFT"
+                      styleClass="hero-text-container">
+                    <padding>
+                        <Insets top="50" left="100"/>
+                    </padding>
+
+                    <Label text="Pro Generation" styleClass="hero-subtitle" />
+                    <Label text="RTX 4070 New" styleClass="hero-title" />
+                    <Label text="Created to change everything for the better. For everyone." styleClass="hero-description" />
+                    <Button text="SHOP NOW" styleClass="hero-button" />
+                </VBox>
+            </StackPane>
+
+            <!-- Category Section -->
+            <VBox alignment="CENTER" spacing="20" styleClass="category-section">
+                <padding>
+                    <Insets top="40" right="40" bottom="40" left="40"/>
+                </padding>
+                <Label text="Browse By Category" styleClass="category-title" />
+                <FlowPane hgap="20" vgap="20" alignment="CENTER">
+                    <Button text="📱 Phones" styleClass="category-btn"/>
+                    <Button text="⌚ Smart Watches" styleClass="category-btn"/>
+                    <Button text="📷 Cameras" styleClass="category-btn"/>
+                    <Button text="🎧 Headphones" styleClass="category-btn"/>
+                    <Button text="💻 Computers" styleClass="category-btn"/>
+                    <Button text="🎮 Gaming" styleClass="category-btn"/>
+                </FlowPane>
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>
