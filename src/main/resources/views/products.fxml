@@ -1,25 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.ecommerce.controllers.ProductsController"
-            prefWidth="1280" prefHeight="720">
+            prefWidth="1280" prefHeight="720"
+            stylesheets="@/styles/products.css">
 
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="20" padding="20" styleClass="products-header">
-            <Label fx:id="categoryLabel" text="All Products" styleClass="category-title" />
-            <Region HBox.hgrow="ALWAYS" />
-            <TextField fx:id="searchField" promptText="Search for products..." styleClass="search-field" />
-        </HBox>
-    </top>
+        <VBox spacing="0">
+            <HBox spacing="20" alignment="CENTER_LEFT" styleClass="navbar">
+                <Button text="← Back" onAction="#goBack" styleClass="back-btn" />
+                <Region HBox.hgrow="ALWAYS" />
+                <MenuButton text="👤 Islam Yasin" styleClass="profile-menu">
+                    <items>
+                        <MenuItem text="My Profile" />
+                        <MenuItem text="Settings" />
+                        <MenuItem text="Log Out" onAction="#handleLogout" />
+                    </items>
+                </MenuButton>
+            </HBox>
 
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="products-header">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10" />
+                </padding>
+                <Label fx:id="categoryTitle" styleClass="category-title" text="Category" />
+                <TextField fx:id="searchField" styleClass="search-field" promptText="Search products..." />
+                <ComboBox fx:id="filterTypeCombo" promptText="Filter by..." styleClass="filter-type-combo" />
+                <Label text="Selected Products: 85" style="-fx-font-size: 14; -fx-text-fill: #777;" />
+                <Region fx:id="spacer" HBox.hgrow="ALWAYS" />
+                <ComboBox fx:id="sortCombo" promptText="Sort by" />
+            </HBox>
+        </VBox>
+    </top>
+    <left>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+            <Label text="Filter by Brand" style="-fx-font-weight: bold; -fx-font-size: 16;" />
+            <TextField fx:id="brandSearchField" promptText="Search brand..." onKeyReleased="#filterBrandList" />
+            <VBox fx:id="brandFilterBox" spacing="5" />
+        </VBox>
+    </left>
     <center>
-        <ScrollPane fitToWidth="true">
-            <FlowPane fx:id="productsContainer" padding="20" hgap="20" vgap="20" alignment="TOP_LEFT" />
-        </ScrollPane>
+        <VBox spacing="20" alignment="CENTER">
+            <ScrollPane fitToWidth="true">
+                <FlowPane fx:id="productsFlowPane" alignment="CENTER" hgap="20" vgap="20">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20" />
+                    </padding>
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
     </center>
 
 </BorderPane>

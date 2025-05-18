@@ -8,8 +8,6 @@
             fx:controller="org.example.ecommerce.controllers.HomeController"
             prefWidth="1280" prefHeight="720"
             stylesheets="@/styles/home.css">
-
-    <!-- Top Navigation Bar -->
     <top>
         <HBox spacing="30" alignment="CENTER_LEFT" styleClass="navbar">
             <Label text="cyber" styleClass="logo" />
@@ -23,13 +21,10 @@
                 <Hyperlink text="Blog" />
                 <Button text="❤" styleClass="icon-btn" />
                 <Button text="🛒" styleClass="icon-btn" />
-
-                <!-- User Avatar + Profile Menu -->
+                <Button fx:id="adminDashboardBtn" text="🔧 Admin" onAction="#goToAdminDashboard" />
                 <ImageView fx:id="userAvatar"
                            fitWidth="32" fitHeight="32"
                            preserveRatio="true"> </ImageView>
-
-
                 <MenuButton text="👤 Islam Yasin" styleClass="profile-menu">
                     <items>
                         <MenuItem text="My Profile" />
@@ -73,13 +68,14 @@
                 </padding>
                 <Label text="Browse By Category" styleClass="category-title" />
                 <FlowPane hgap="20" vgap="20" alignment="CENTER">
-                    <Button text="📱 Phones" styleClass="category-btn"/>
-                    <Button text="⌚ Smart Watches" styleClass="category-btn"/>
-                    <Button text="📷 Cameras" styleClass="category-btn"/>
-                    <Button text="🎧 Headphones" styleClass="category-btn"/>
-                    <Button text="💻 Computers" styleClass="category-btn"/>
-                    <Button text="🎮 Gaming" styleClass="category-btn"/>
+                    <Button text="📱 Phones" fx:id="phonesBtn" onAction="#filterPhones" styleClass="category-btn"/>
+                    <Button text="🎮 Games" fx:id="gamesBtn" onAction="#filterGames" styleClass="category-btn"/>
+                    <Button text="📷 Cameras" fx:id="camerasBtn" onAction="#filterCameras" styleClass="category-btn"/>
+                    <Button text="🎧 Headphones" fx:id="headphonesBtn" onAction="#filterHeadphones" styleClass="category-btn"/>
+                    <Button text="💻 Computers" fx:id="computersBtn" onAction="#filterComputers" styleClass="category-btn"/>
+                    <Button text="🎮 Gaming" fx:id="gamingBtn" onAction="#filterGaming" styleClass="category-btn"/>
                 </FlowPane>
+
             </VBox>
         </VBox>
     </center>

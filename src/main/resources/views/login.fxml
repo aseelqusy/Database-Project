@@ -20,7 +20,7 @@
                     <Hyperlink text="Forgot Password?" />
                 </HBox>
                 <Button text="SIGN IN →" onAction="#handleLogin" styleClass="login-button" />
-                <Hyperlink text="I don’t have an account ? Sign up" />
+                <Hyperlink text="I don’t have an account? Sign up" onAction="#goToSignup"/>
             </VBox>
         </StackPane>
     </left>

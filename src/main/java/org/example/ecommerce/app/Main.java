@@ -16,6 +16,7 @@ public class Main extends Application {
             scene.getStylesheets().add(getClass().getResource("/styles/home.css").toExternalForm());
             scene.getStylesheets().add(getClass().getResource("/styles/products.css").toExternalForm());
             scene.getStylesheets().add(getClass().getResource("/styles/login.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/styles/admin.css").toExternalForm());
             primaryStage.setTitle("E-Commerce PC  ");
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);

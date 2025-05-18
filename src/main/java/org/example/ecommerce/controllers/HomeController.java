@@ -9,7 +9,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.example.ecommerce.utils.Session;
+
+
 
 import java.io.IOException;
 
@@ -23,15 +27,19 @@ public class HomeController {
 
     @FXML
     private TextField searchField;
+    @FXML private Button adminDashboardBtn;
 
     @FXML
     public void initialize() {
+        if (Session.getCurrentUser() == null) {
+            System.out.println("No user session found!");
+            return;
+        }
 
-        try {
-            Image img = new Image(getClass().getResource("/assets/RTX.jpg").toExternalForm());
-            heroImage.setImage(img);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (Session.getCurrentUser().getRole().equalsIgnoreCase("admin")) {
+            adminDashboardBtn.setVisible(true);
+        } else {
+            adminDashboardBtn.setVisible(false);
         }
     }
 
@@ -47,7 +55,7 @@ public class HomeController {
 
     @FXML
     private void filterWatches(ActionEvent event) {
-        openProductsPage("smartwatches");
+        openProductsPage("games");
     }
 
     @FXML
@@ -70,6 +78,24 @@ public class HomeController {
         openProductsPage("gaming");
     }
     @FXML
+    private void filterGames(ActionEvent event) {
+        openProductsPage("games");
+    }
+    @FXML
+    private void goToAdminDashboard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/admin_dashboard.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) adminDashboardBtn.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Admin Dashboard");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void handleLogout() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
@@ -91,7 +117,7 @@ public class HomeController {
             Parent root = loader.load();
 
             ProductsController controller = loader.getController();
-            controller.setCategory(category);
+            controller.setSelectedCategory(category);
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/styles/products.css").toExternalForm());
